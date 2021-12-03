@@ -6,7 +6,7 @@ module type Monad = sig
   val ( >>= ) : 'a t -> ('a -> 'b t) -> 'b t
 end
 
-module MaybeMonad : Monad with type 'a t = 'a option = struct
+module MaybeMonad = struct
   type 'a t = 'a option
 
   let return a = Some a
