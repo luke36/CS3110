@@ -1,0 +1,40 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "type": "shell",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "command": "dune",
+      "args": [
+        "exec",
+        "./${fileBasenameNoExtension}.exe"
+      ],
+      "options": {
+        "cwd": "${fileDirname}"
+      },
+      "label": "dune",
+      "presentation": {
+        "focus": true
+      }
+    },
+    {
+      "type": "shell",
+      "command": "ocamlformat",
+      "args": [
+        "-i",
+        "--enable-outside-detected-project",
+        "*.ml"
+      ],
+      "options": {
+        "cwd": "${fileDirname}"
+      },
+      "label": "ocamlformat",
+      "presentation": {
+        "reveal": "never"
+      }
+    }
+  ]
+}

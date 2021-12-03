@@ -1,0 +1,125 @@
+# dune build algebra.a
+# OCAMLPARAM: unset
+# Workspace root: /home/luxy1115/programs/CS3110/Exercises/5_11
+$ /usr/bin/nproc > /tmp/dune84a422.output 2> /dev/null
+# Auto-detected concurrency: 8
+# disable binary cache
+$ /home/luxy1115/.opam/4.12.1/bin/ocamlc.opt -config > /tmp/dunec35025.output
+# Dune context:
+#  { name = "default"
+#  ; kind = "default"
+#  ; profile = Dyn
+#  ; merlin = true
+#  ; for_host = None
+#  ; fdo_target_exe = None
+#  ; build_dir = "default"
+#  ; toplevel_path = Some External "/home/luxy1115/.opam/4.12.1/lib/toplevel"
+#  ; ocaml_bin = External "/home/luxy1115/.opam/4.12.1/bin"
+#  ; ocaml = Ok External "/home/luxy1115/.opam/4.12.1/bin/ocaml"
+#  ; ocamlc = External "/home/luxy1115/.opam/4.12.1/bin/ocamlc.opt"
+#  ; ocamlopt = Ok External "/home/luxy1115/.opam/4.12.1/bin/ocamlopt.opt"
+#  ; ocamldep = Ok External "/home/luxy1115/.opam/4.12.1/bin/ocamldep.opt"
+#  ; ocamlmklib = Ok External "/home/luxy1115/.opam/4.12.1/bin/ocamlmklib.opt"
+#  ; env =
+#      map
+#        { "DUNE_OCAML_HARDCODED" : "/home/luxy1115/.opam/4.12.1/lib"
+#        ; "DUNE_OCAML_STDLIB" : "/home/luxy1115/.opam/4.12.1/lib/ocaml"
+#        ; "DUNE_SOURCEROOT" : "/home/luxy1115/programs/CS3110/Exercises/5_11"
+#        ; "INSIDE_DUNE" :
+#            "/home/luxy1115/programs/CS3110/Exercises/5_11/_build/default"
+#        ; "OCAMLFIND_IGNORE_DUPS_IN" :
+#            "/home/luxy1115/programs/CS3110/Exercises/5_11/_build/install/default/lib"
+#        ; "OCAMLPATH" :
+#            "/home/luxy1115/programs/CS3110/Exercises/5_11/_build/install/default/lib"
+#        ; "OCAMLTOP_INCLUDE_PATH" :
+#            "/home/luxy1115/programs/CS3110/Exercises/5_11/_build/install/default/lib/toplevel"
+#        ; "OCAML_COLOR" : "always"
+#        ; "OPAMCOLOR" : "always"
+#        }
+#  ; findlib_path = [ External "/home/luxy1115/.opam/4.12.1/lib" ]
+#  ; arch_sixtyfour = true
+#  ; natdynlink_supported = true
+#  ; supports_shared_libraries = true
+#  ; ocaml_config =
+#      { version = "4.12.1"
+#      ; standard_library_default = "/home/luxy1115/.opam/4.12.1/lib/ocaml"
+#      ; standard_library = "/home/luxy1115/.opam/4.12.1/lib/ocaml"
+#      ; standard_runtime = "the_standard_runtime_variable_was_deleted"
+#      ; ccomp_type = "cc"
+#      ; c_compiler = "gcc"
+#      ; ocamlc_cflags = [ "-O2"; "-fno-strict-aliasing"; "-fwrapv"; "-fPIC" ]
+#      ; ocamlc_cppflags = [ "-D_FILE_OFFSET_BITS=64"; "-D_REENTRANT" ]
+#      ; ocamlopt_cflags =
+#          [ "-O2"; "-fno-strict-aliasing"; "-fwrapv"; "-fPIC" ]
+#      ; ocamlopt_cppflags = [ "-D_FILE_OFFSET_BITS=64"; "-D_REENTRANT" ]
+#      ; bytecomp_c_compiler =
+#          [ "gcc"
+#          ; "-O2"
+#          ; "-fno-strict-aliasing"
+#          ; "-fwrapv"
+#          ; "-fPIC"
+#          ; "-D_FILE_OFFSET_BITS=64"
+#          ; "-D_REENTRANT"
+#          ]
+#      ; bytecomp_c_libraries = [ "-lm"; "-ldl"; "-lpthread" ]
+#      ; native_c_compiler =
+#          [ "gcc"
+#          ; "-O2"
+#          ; "-fno-strict-aliasing"
+#          ; "-fwrapv"
+#          ; "-fPIC"
+#          ; "-D_FILE_OFFSET_BITS=64"
+#          ; "-D_REENTRANT"
+#          ]
+#      ; native_c_libraries = [ "-lm"; "-ldl" ]
+#      ; cc_profile = []
+#      ; architecture = "amd64"
+#      ; model = "default"
+#      ; int_size = 63
+#      ; word_size = 64
+#      ; system = "linux"
+#      ; asm = [ "as" ]
+#      ; asm_cfi_supported = true
+#      ; with_frame_pointers = false
+#      ; ext_exe = ""
+#      ; ext_obj = ".o"
+#      ; ext_asm = ".s"
+#      ; ext_lib = ".a"
+#      ; ext_dll = ".so"
+#      ; os_type = "Unix"
+#      ; default_executable_name = "a.out"
+#      ; systhread_supported = true
+#      ; host = "x86_64-pc-linux-gnu"
+#      ; target = "x86_64-pc-linux-gnu"
+#      ; profiling = false
+#      ; flambda = false
+#      ; spacetime = false
+#      ; safe_string = true
+#      ; exec_magic_number = "Caml1999X029"
+#      ; cmi_magic_number = "Caml1999I029"
+#      ; cmo_magic_number = "Caml1999O029"
+#      ; cma_magic_number = "Caml1999A029"
+#      ; cmx_magic_number = "Caml1999Y029"
+#      ; cmxa_magic_number = "Caml1999Z029"
+#      ; ast_impl_magic_number = "Caml1999M029"
+#      ; ast_intf_magic_number = "Caml1999N029"
+#      ; cmxs_magic_number = "Caml1999D029"
+#      ; cmt_magic_number = "Caml1999T029"
+#      ; natdynlink_supported = true
+#      ; supports_shared_libraries = true
+#      ; windows_unicode = false
+#      }
+#  }
+$ (cd _build/default && /home/luxy1115/.opam/4.12.1/bin/ocamldep.opt -modules -impl algebra.ml) > _build/default/.algebra.objs/algebra.ml.d
+$ (cd _build/default && /home/luxy1115/.opam/4.12.1/bin/ocamldep.opt -modules -intf date.mli) > _build/default/.algebra.objs/date.mli.d
+$ (cd _build/default && /home/luxy1115/.opam/4.12.1/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -w -49 -nopervasives -nostdlib -g -bin-annot -I .algebra.objs/byte -no-alias-deps -opaque -o .algebra.objs/byte/algebra__.cmo -c -impl algebra__.ml-gen)
+$ (cd _build/default && /home/luxy1115/.opam/4.12.1/bin/ocamldep.opt -modules -impl date.ml) > _build/default/.algebra.objs/date.ml.d
+$ (cd _build/default && /home/luxy1115/.opam/4.12.1/bin/ocamldep.opt -modules -impl e_5_11.ml) > _build/default/.algebra.objs/e_5_11.ml.d
+$ (cd _build/default && /home/luxy1115/.opam/4.12.1/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I .algebra.objs/byte -no-alias-deps -opaque -open Algebra__ -o .algebra.objs/byte/algebra__Date.cmi -c -intf date.mli)
+$ (cd _build/default && /home/luxy1115/.opam/4.12.1/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -w -49 -nopervasives -nostdlib -g -I .algebra.objs/byte -I .algebra.objs/native -intf-suffix .ml-gen -no-alias-deps -opaque -o .algebra.objs/native/algebra__.cmx -c -impl algebra__.ml-gen)
+$ (cd _build/default && /home/luxy1115/.opam/4.12.1/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I .algebra.objs/byte -no-alias-deps -opaque -open Algebra__ -o .algebra.objs/byte/algebra.cmo -c -impl algebra.ml)
+$ (cd _build/default && /home/luxy1115/.opam/4.12.1/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I .algebra.objs/byte -I .algebra.objs/native -intf-suffix .ml -no-alias-deps -opaque -open Algebra__ -o .algebra.objs/native/algebra__Date.cmx -c -impl date.ml)
+$ (cd _build/default && /home/luxy1115/.opam/4.12.1/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I .algebra.objs/byte -I .algebra.objs/native -intf-suffix .ml -no-alias-deps -opaque -open Algebra__ -o .algebra.objs/native/algebra.cmx -c -impl algebra.ml)
+$ (cd _build/default && /home/luxy1115/.opam/4.12.1/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I .algebra.objs/byte -no-alias-deps -opaque -open Algebra__ -o .algebra.objs/byte/algebra__E_5_11.cmo -c -impl e_5_11.ml)
+$ (cd _build/default && /home/luxy1115/.opam/4.12.1/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I .algebra.objs/byte -I .algebra.objs/native -intf-suffix .ml -no-alias-deps -opaque -open Algebra__ -o .algebra.objs/native/algebra__E_5_11.cmx -c -impl e_5_11.ml)
+$ (cd _build/default && /home/luxy1115/.opam/4.12.1/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -a -o algebra.cmxa .algebra.objs/native/algebra__.cmx .algebra.objs/native/algebra__E_5_11.cmx .algebra.objs/native/algebra__Date.cmx .algebra.objs/native/algebra.cmx)

@@ -1,0 +1,89 @@
+2021-11-29T08:29:30+00:00 LAPTOP-3OKIDMJV#00 I: Runner: processes
+2021-11-29T08:29:30+00:00 LAPTOP-3OKIDMJV#00 I: Chooser: simple
+2021-11-29T08:29:30+00:00 LAPTOP-3OKIDMJV#00 I: Configuration suite_name = "test suite for sorts"
+2021-11-29T08:29:30+00:00 LAPTOP-3OKIDMJV#00 I: Configuration cache_filename = "/home/luxy1115/programs/CS3110/Exercises/6_11/_build/oUnit-$(suite_name).cache"
+2021-11-29T08:29:30+00:00 LAPTOP-3OKIDMJV#00 I: Configuration run_gc_full_major = "true"
+2021-11-29T08:29:30+00:00 LAPTOP-3OKIDMJV#00 I: Configuration display = "true"
+2021-11-29T08:29:30+00:00 LAPTOP-3OKIDMJV#00 I: Configuration results_style_1_X = "false"
+2021-11-29T08:29:30+00:00 LAPTOP-3OKIDMJV#00 I: Configuration testdata_dir = "none"
+2021-11-29T08:29:30+00:00 LAPTOP-3OKIDMJV#00 I: Configuration health_check_interval = "1."
+2021-11-29T08:29:30+00:00 LAPTOP-3OKIDMJV#00 I: Configuration verbose = "false"
+2021-11-29T08:29:30+00:00 LAPTOP-3OKIDMJV#00 I: Configuration chooser = "simple"
+2021-11-29T08:29:30+00:00 LAPTOP-3OKIDMJV#00 I: Configuration output_html_dir = "none"
+2021-11-29T08:29:30+00:00 LAPTOP-3OKIDMJV#00 I: Configuration processes_kill_period = "5."
+2021-11-29T08:29:30+00:00 LAPTOP-3OKIDMJV#00 I: Configuration runner = "processes"
+2021-11-29T08:29:30+00:00 LAPTOP-3OKIDMJV#00 I: Configuration shards = "4"
+2021-11-29T08:29:30+00:00 LAPTOP-3OKIDMJV#00 I: Configuration processes_grace_period = "5."
+2021-11-29T08:29:30+00:00 LAPTOP-3OKIDMJV#00 I: Configuration log_encoding = "utf-8"
+2021-11-29T08:29:30+00:00 LAPTOP-3OKIDMJV#00 I: Configuration output_junit_file = "none"
+2021-11-29T08:29:30+00:00 LAPTOP-3OKIDMJV#00 I: Configuration ci = "false"
+2021-11-29T08:29:30+00:00 LAPTOP-3OKIDMJV#00 I: Configuration output_file = "/home/luxy1115/programs/CS3110/Exercises/6_11/_build/oUnit-$(suite_name)-$(shard_id).log"
+2021-11-29T08:29:30+00:00 LAPTOP-3OKIDMJV#00 I: Using 4 workers maximum.
+2021-11-29T08:29:30+00:00 LAPTOP-3OKIDMJV#00 I: Starting worker number LAPTOP-3OKIDMJV#01.
+2021-11-29T08:29:30+00:00 LAPTOP-3OKIDMJV#00 I: Worker LAPTOP-3OKIDMJV#01 started.
+2021-11-29T08:29:30+00:00 LAPTOP-3OKIDMJV#00 I: Starting worker number LAPTOP-3OKIDMJV#02.
+2021-11-29T08:29:30+00:00 LAPTOP-3OKIDMJV#00 I: Worker LAPTOP-3OKIDMJV#02 started.
+2021-11-29T08:29:30+00:00 LAPTOP-3OKIDMJV#00 I: Starting worker number LAPTOP-3OKIDMJV#03.
+2021-11-29T08:29:30+00:00 LAPTOP-3OKIDMJV#00 I: Worker LAPTOP-3OKIDMJV#03 started.
+2021-11-29T08:29:30+00:00 LAPTOP-3OKIDMJV#00 I: Starting worker number LAPTOP-3OKIDMJV#04.
+2021-11-29T08:29:30+00:00 LAPTOP-3OKIDMJV#00 I: Worker LAPTOP-3OKIDMJV#04 started.
+2021-11-29T08:29:30+00:00 LAPTOP-3OKIDMJV#00 I: Still 4 tests running : test suite for sorts:3:ins sort three-element unsorted list, test suite for sorts:2:ins sort two-element unsorted list, test suite for sorts:1:ins sort two-element sorted list, test suite for sorts:0:ins sort empty list.
+2021-11-29T08:29:30+00:00 LAPTOP-3OKIDMJV#00 I: 4 tests running: test suite for sorts:3:ins sort three-element unsorted list, test suite for sorts:2:ins sort two-element unsorted list, test suite for sorts:1:ins sort two-element sorted list, test suite for sorts:0:ins sort empty list.
+2021-11-29T08:29:30+00:00 LAPTOP-3OKIDMJV#01 I: Start test test suite for sorts:0:ins sort empty list.
+2021-11-29T08:29:30+00:00 LAPTOP-3OKIDMJV#02 I: Start test test suite for sorts:1:ins sort two-element sorted list.
+2021-11-29T08:29:30+00:00 LAPTOP-3OKIDMJV#00 I: Still 4 tests running : test suite for sorts:3:ins sort three-element unsorted list, test suite for sorts:2:ins sort two-element unsorted list, test suite for sorts:1:ins sort two-element sorted list, test suite for sorts:0:ins sort empty list.
+2021-11-29T08:29:30+00:00 LAPTOP-3OKIDMJV#00 I: 4 tests running: test suite for sorts:3:ins sort three-element unsorted list, test suite for sorts:2:ins sort two-element unsorted list, test suite for sorts:1:ins sort two-element sorted list, test suite for sorts:0:ins sort empty list.
+2021-11-29T08:29:30+00:00 LAPTOP-3OKIDMJV#03 I: Start test test suite for sorts:2:ins sort two-element unsorted list.
+2021-11-29T08:29:30+00:00 LAPTOP-3OKIDMJV#00 I: Still 4 tests running : test suite for sorts:3:ins sort three-element unsorted list, test suite for sorts:2:ins sort two-element unsorted list, test suite for sorts:1:ins sort two-element sorted list, test suite for sorts:0:ins sort empty list.
+2021-11-29T08:29:30+00:00 LAPTOP-3OKIDMJV#00 I: 4 tests running: test suite for sorts:3:ins sort three-element unsorted list, test suite for sorts:2:ins sort two-element unsorted list, test suite for sorts:1:ins sort two-element sorted list, test suite for sorts:0:ins sort empty list.
+2021-11-29T08:29:30+00:00 LAPTOP-3OKIDMJV#04 I: Start test test suite for sorts:3:ins sort three-element unsorted list.
+2021-11-29T08:29:30+00:00 LAPTOP-3OKIDMJV#00 I: Still 4 tests running : test suite for sorts:3:ins sort three-element unsorted list, test suite for sorts:2:ins sort two-element unsorted list, test suite for sorts:1:ins sort two-element sorted list, test suite for sorts:0:ins sort empty list.
+2021-11-29T08:29:30+00:00 LAPTOP-3OKIDMJV#00 I: 4 tests running: test suite for sorts:3:ins sort three-element unsorted list, test suite for sorts:2:ins sort two-element unsorted list, test suite for sorts:1:ins sort two-element sorted list, test suite for sorts:0:ins sort empty list.
+2021-11-29T08:29:30+00:00 LAPTOP-3OKIDMJV#01 I: Test test suite for sorts:0:ins sort empty list is successful.
+2021-11-29T08:29:30+00:00 LAPTOP-3OKIDMJV#00 I: Still 4 tests running : test suite for sorts:3:ins sort three-element unsorted list, test suite for sorts:2:ins sort two-element unsorted list, test suite for sorts:1:ins sort two-element sorted list, test suite for sorts:0:ins sort empty list.
+2021-11-29T08:29:30+00:00 LAPTOP-3OKIDMJV#00 I: 4 tests running: test suite for sorts:3:ins sort three-element unsorted list, test suite for sorts:2:ins sort two-element unsorted list, test suite for sorts:1:ins sort two-element sorted list, test suite for sorts:0:ins sort empty list.
+2021-11-29T08:29:30+00:00 LAPTOP-3OKIDMJV#01 I: End test test suite for sorts:0:ins sort empty list.
+2021-11-29T08:29:30+00:00 LAPTOP-3OKIDMJV#00 I: Still 4 tests running : test suite for sorts:3:ins sort three-element unsorted list, test suite for sorts:2:ins sort two-element unsorted list, test suite for sorts:1:ins sort two-element sorted list, test suite for sorts:0:ins sort empty list.
+2021-11-29T08:29:30+00:00 LAPTOP-3OKIDMJV#00 I: 4 tests running: test suite for sorts:3:ins sort three-element unsorted list, test suite for sorts:2:ins sort two-element unsorted list, test suite for sorts:1:ins sort two-element sorted list, test suite for sorts:0:ins sort empty list.
+2021-11-29T08:29:30+00:00 LAPTOP-3OKIDMJV#00 I: Still 3 tests running : test suite for sorts:3:ins sort three-element unsorted list, test suite for sorts:2:ins sort two-element unsorted list, test suite for sorts:1:ins sort two-element sorted list.
+2021-11-29T08:29:30+00:00 LAPTOP-3OKIDMJV#00 I: 3 tests running: test suite for sorts:3:ins sort three-element unsorted list, test suite for sorts:2:ins sort two-element unsorted list, test suite for sorts:1:ins sort two-element sorted list.
+2021-11-29T08:29:30+00:00 LAPTOP-3OKIDMJV#02 I: Test test suite for sorts:1:ins sort two-element sorted list is successful.
+2021-11-29T08:29:30+00:00 LAPTOP-3OKIDMJV#00 I: Still 3 tests running : test suite for sorts:3:ins sort three-element unsorted list, test suite for sorts:2:ins sort two-element unsorted list, test suite for sorts:1:ins sort two-element sorted list.
+2021-11-29T08:29:30+00:00 LAPTOP-3OKIDMJV#00 I: 3 tests running: test suite for sorts:3:ins sort three-element unsorted list, test suite for sorts:2:ins sort two-element unsorted list, test suite for sorts:1:ins sort two-element sorted list.
+2021-11-29T08:29:30+00:00 LAPTOP-3OKIDMJV#02 I: End test test suite for sorts:1:ins sort two-element sorted list.
+2021-11-29T08:29:30+00:00 LAPTOP-3OKIDMJV#03 I: Test test suite for sorts:2:ins sort two-element unsorted list is successful.
+2021-11-29T08:29:30+00:00 LAPTOP-3OKIDMJV#04 I: Test test suite for sorts:3:ins sort three-element unsorted list is successful.
+2021-11-29T08:29:30+00:00 LAPTOP-3OKIDMJV#00 I: Still 3 tests running : test suite for sorts:3:ins sort three-element unsorted list, test suite for sorts:2:ins sort two-element unsorted list, test suite for sorts:1:ins sort two-element sorted list.
+2021-11-29T08:29:30+00:00 LAPTOP-3OKIDMJV#00 I: 3 tests running: test suite for sorts:3:ins sort three-element unsorted list, test suite for sorts:2:ins sort two-element unsorted list, test suite for sorts:1:ins sort two-element sorted list.
+2021-11-29T08:29:30+00:00 LAPTOP-3OKIDMJV#03 I: End test test suite for sorts:2:ins sort two-element unsorted list.
+2021-11-29T08:29:30+00:00 LAPTOP-3OKIDMJV#04 I: End test test suite for sorts:3:ins sort three-element unsorted list.
+2021-11-29T08:29:30+00:00 LAPTOP-3OKIDMJV#00 I: Still 2 tests running : test suite for sorts:3:ins sort three-element unsorted list, test suite for sorts:2:ins sort two-element unsorted list.
+2021-11-29T08:29:30+00:00 LAPTOP-3OKIDMJV#00 I: 2 tests running: test suite for sorts:3:ins sort three-element unsorted list, test suite for sorts:2:ins sort two-element unsorted list.
+2021-11-29T08:29:30+00:00 LAPTOP-3OKIDMJV#00 I: 0 tests running: .
+2021-11-29T08:29:30+00:00 LAPTOP-3OKIDMJV#00 I: Worker LAPTOP-3OKIDMJV#01 has ended.
+2021-11-29T08:29:30+00:00 LAPTOP-3OKIDMJV#00 I: Worker LAPTOP-3OKIDMJV#02 has ended.
+2021-11-29T08:29:30+00:00 LAPTOP-3OKIDMJV#00 I: Worker LAPTOP-3OKIDMJV#03 has ended.
+2021-11-29T08:29:30+00:00 LAPTOP-3OKIDMJV#00 I: Worker LAPTOP-3OKIDMJV#04 has ended.
+2021-11-29T08:29:30+00:00 LAPTOP-3OKIDMJV#00 I: Used 4 worker during test execution.
+2021-11-29T08:29:30+00:00 LAPTOP-3OKIDMJV#00 I: Run 1 tests with shard LAPTOP-3OKIDMJV#01.
+2021-11-29T08:29:30+00:00 LAPTOP-3OKIDMJV#00 I: Run 1 tests with shard LAPTOP-3OKIDMJV#04.
+2021-11-29T08:29:30+00:00 LAPTOP-3OKIDMJV#00 I: Run 1 tests with shard LAPTOP-3OKIDMJV#03.
+2021-11-29T08:29:30+00:00 LAPTOP-3OKIDMJV#00 I: Run 1 tests with shard LAPTOP-3OKIDMJV#02.
+2021-11-29T08:29:30+00:00 LAPTOP-3OKIDMJV#00 I: Check health of shard LAPTOP-3OKIDMJV#01, 5 times.
+2021-11-29T08:29:30+00:00 LAPTOP-3OKIDMJV#00 I: Check health of shard LAPTOP-3OKIDMJV#04, 1 times.
+2021-11-29T08:29:30+00:00 LAPTOP-3OKIDMJV#00 I: Check health of shard LAPTOP-3OKIDMJV#03, 1 times.
+2021-11-29T08:29:30+00:00 LAPTOP-3OKIDMJV#00 I: Check health of shard LAPTOP-3OKIDMJV#02, 2 times.
+2021-11-29T08:29:30+00:00 LAPTOP-3OKIDMJV#00 I: ==============
+2021-11-29T08:29:30+00:00 LAPTOP-3OKIDMJV#00 I: Summary:
+2021-11-29T08:29:30+00:00 LAPTOP-3OKIDMJV#00 I: Test test suite for sorts:3:ins sort three-element unsorted list is successful.
+2021-11-29T08:29:30+00:00 LAPTOP-3OKIDMJV#00 I: Test test suite for sorts:2:ins sort two-element unsorted list is successful.
+2021-11-29T08:29:30+00:00 LAPTOP-3OKIDMJV#00 I: Test test suite for sorts:1:ins sort two-element sorted list is successful.
+2021-11-29T08:29:30+00:00 LAPTOP-3OKIDMJV#00 I: Test test suite for sorts:0:ins sort empty list is successful.
+2021-11-29T08:29:30+00:00 LAPTOP-3OKIDMJV#00 I: Ran: 4 tests in: 0.10 seconds.
+2021-11-29T08:29:30+00:00 LAPTOP-3OKIDMJV#00 I: Cases: 4.
+2021-11-29T08:29:30+00:00 LAPTOP-3OKIDMJV#00 I: Tried: 4.
+2021-11-29T08:29:30+00:00 LAPTOP-3OKIDMJV#00 I: Errors: 0.
+2021-11-29T08:29:30+00:00 LAPTOP-3OKIDMJV#00 I: Failures: 0.
+2021-11-29T08:29:30+00:00 LAPTOP-3OKIDMJV#00 I: Skip: 0.
+2021-11-29T08:29:30+00:00 LAPTOP-3OKIDMJV#00 I: Todo: 0.
+2021-11-29T08:29:30+00:00 LAPTOP-3OKIDMJV#00 I: Timeout: 0.

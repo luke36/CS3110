@@ -1,0 +1,5 @@
+(executable
+ (name test_sorts)
+ (libraries ounit2)
+ (instrumentation
+  (backend bisect_ppx)))

@@ -1,0 +1,6 @@
+(** @canonical Algebra.Date *)
+module Date = Algebra__Date
+
+
+(** @canonical Algebra.E_5_11 *)
+module E_5_11 = Algebra__E_5_11
