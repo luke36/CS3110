@@ -357,3 +357,32 @@ let rec within' eps (Cons (h, t)) =
   if test h h' < eps then h' else within eps (Cons (h', t'))
 
 let e' ?x:(arg = 1.) eps = arg |> e_terms' |> total |> within' eps
+
+(* diffrent sequence rep *)
+type 'a sequence = Cons of (unit -> 'a * 'a sequence)
+
+let hd (Cons s) = match s () with h, _ -> h
+
+let tl (Cons s) = match s () with _, t -> t
+
+let rec from n = Cons (fun () -> (n, from (n + 1)))
+
+let nat = from 0
+
+let rec map f (Cons s) =
+  Cons (fun () -> match s () with h, t -> (f h, map f t))
+
+(* lazy hello *)
+let lazy_hello : unit Lazy.t = lazy (print_endline "hello")
+
+(* lazy and *)
+let ( &&& ) lb1 lb2 = if not (Lazy.force lb1) then false else Lazy.force lb2
+
+(* lazy sequence *)
+type 'a lazysequence = Cons of 'a * 'a lazysequence Lazy.t
+
+let rec map f (Cons (h, t)) = Cons (f h, lazy (map f (Lazy.force t)))
+
+let rec filter f (Cons (h, t)) =
+  if f h then Cons (h, lazy (filter f (Lazy.force t)))
+  else filter f (Lazy.force t)
