@@ -316,8 +316,322 @@ let rec interleave (Cons (h1, t1)) (Cons (h2, t2)) =
 let sift n = filter (fun m -> m mod n <> 0)
 
 (* primes *)
-let rec filter_prime (Cons (h, t)) = Cons (h, fun () -> filter_prime (sift h (t ())))
+let rec filter_prime (Cons (h, t)) =
+  Cons (h, fun () -> filter_prime (sift h (t ())))
 
 let rec from n = Cons (n, fun () -> from (n + 1))
 
 let primes = filter_prime (from 2)
+
+(* approximately e *)
+let rec fact n = if n = 0 then 1 else n * fact (n - 1)
+
+let e_terms x =
+  let f k = (x ** float_of_int k) /. float_of_int (fact k) in
+  let rec from n = Cons (f n, fun () -> from (n + 1)) in
+  from 0
+
+let total seq =
+  let rec help acc (Cons (h, t)) =
+    Cons (acc +. h, fun () -> help (acc +. h) (t ()))
+  in
+  help 0. seq
+
+let rec within eps (Cons (h, t)) =
+  let (Cons (h', t')) = t () in
+  if abs_float (h -. h') < eps then h' else within eps (Cons (h', t'))
+
+let e ?x:(arg = 1.) eps = arg |> e_terms |> total |> within eps
+
+(* better e *)
+let rec e_terms_aux x k acc =
+  Cons (acc, fun () -> e_terms_aux x (k + 1) (acc /. float_of_int k *. x))
+
+let e_terms' x = e_terms_aux x 1 1.
+
+let rec within' eps (Cons (h, t)) =
+  let (Cons (h', t')) = t () in
+  let test a b =
+    abs_float (a -. b) /. (((abs_float a +. abs_float b) /. 2.) +. 1.)
+  in
+  if test h h' < eps then h' else within eps (Cons (h', t'))
+
+let e' ?x:(arg = 1.) eps = arg |> e_terms' |> total |> within' eps
+
+(* diffrent sequence rep *)
+type 'a sequence = Cons of (unit -> 'a * 'a sequence)
+
+let hd (Cons s) = match s () with h, _ -> h
+
+let tl (Cons s) = match s () with _, t -> t
+
+let rec from n = Cons (fun () -> (n, from (n + 1)))
+
+let nat = from 0
+
+let rec map f (Cons s) =
+  Cons (fun () -> match s () with h, t -> (f h, map f t))
+
+(* lazy hello *)
+let lazy_hello : unit Lazy.t = lazy (print_endline "hello")
+
+(* lazy and *)
+let ( &&& ) lb1 lb2 = if not (Lazy.force lb1) then false else Lazy.force lb2
+
+(* lazy sequence *)
+type 'a lazysequence = Cons of 'a * 'a lazysequence Lazy.t
+
+let rec map f (Cons (h, t)) = Cons (f h, lazy (map f (Lazy.force t)))
+
+let rec filter f (Cons (h, t)) =
+  if f h then Cons (h, lazy (filter f (Lazy.force t)))
+  else filter f (Lazy.force t)
+
+(* promise and resolve *)
+
+module type PROMISE = sig
+  type 'a state = Pending | Resolved of 'a | Rejected of exn
+
+  type 'a promise
+
+  type 'a resolver
+
+  val make : unit -> 'a promise * 'a resolver
+
+  val return : 'a -> 'a promise
+
+  val state : 'a promise -> 'a state
+
+  val resolve : 'a resolver -> 'a -> unit
+
+  val reject : 'a resolver -> exn -> unit
+
+  val ( >>= ) : 'a promise -> ('a -> 'b promise) -> 'b promise
+end
+
+module Promise : PROMISE = struct
+  type 'a state = Pending | Resolved of 'a | Rejected of exn
+
+  type 'a handler = 'a state -> unit
+
+  type 'a promise = {
+    mutable state : 'a state;
+    mutable handlers : 'a handler list;
+  }
+
+  let enqueue (handler : 'a state -> unit) (promise : 'a promise) : unit =
+    promise.handlers <- handler :: promise.handlers
+
+  type 'a resolver = 'a promise
+
+  let write_once p s =
+    if p.state = Pending then p.state <- s else invalid_arg "cannot write twice"
+
+  let make () =
+    let p = { state = Pending; handlers = [] } in
+    (p, p)
+
+  let return x = { state = Resolved x; handlers = [] }
+
+  let state p = p.state
+
+  let resolve_or_reject (r : 'a resolver) (st : 'a state) =
+    assert (st <> Pending);
+    let handlers = r.handlers in
+    r.handlers <- [];
+    write_once r st;
+    List.iter (fun f -> f st) handlers
+
+  let reject r x = resolve_or_reject r (Rejected x)
+
+  let resolve r x = resolve_or_reject r (Resolved x)
+
+  let handler (resolver : 'a resolver) : 'a handler = function
+    | Pending -> failwith "handler RI violated"
+    | Rejected exc -> reject resolver exc
+    | Resolved x -> resolve resolver x
+
+  let handler_of_callback (callback : 'a -> 'b promise) (resolver : 'b resolver)
+      : 'a handler = function
+    | Pending -> failwith "handler RI violated"
+    | Rejected exc -> reject resolver exc
+    | Resolved x -> (
+        let promise = callback x in
+        match promise.state with
+        | Resolved y -> resolve resolver y
+        | Rejected exc -> reject resolver exc
+        | Pending -> enqueue (handler resolver) promise)
+
+  let ( >>= ) (input_promise : 'a promise) (callback : 'a -> 'b promise) :
+      'b promise =
+    match input_promise.state with
+    | Resolved x -> callback x
+    | Rejected exc -> { state = Rejected exc; handlers = [] }
+    | Pending ->
+        let output_promise, output_resolver = make () in
+        enqueue (handler_of_callback callback output_resolver) input_promise;
+        output_promise
+end
+
+let p, r = Promise.make ()
+
+let p' = Promise.(p >>= fun n -> Promise.return (print_int n))
+
+let _ = Promise.resolve r 90
+(* i still do not quite understand *)
+
+(* promise and resolve lwt *)
+let p, r = Lwt.wait ()
+
+let p' = Lwt.bind p (fun n -> Lwt_io.printf "%d\n" n)
+
+let _ = Lwt.wakeup r 90
+
+(* timing challenge 1 *)
+open Lwt.Infix
+
+let delay (sec : float) : unit Lwt.t = Lwt_unix.sleep sec
+
+let delay_then_print () = delay 3. >>= fun _ -> Lwt_io.print "done"
+
+(* timing challenge 2 *)
+let timing2 () =
+  let _t1 = delay 1. >>= fun () -> Lwt_io.printl "1" in
+  let _t2 = delay 10. >>= fun () -> Lwt_io.printl "2" in
+  let _t3 = delay 20. >>= fun () -> Lwt_io.printl "3" in
+  Lwt_io.printl "all done"
+
+(* timing challenge 3 *)
+let timing3 () =
+  delay 1. >>= fun () ->
+  Lwt_io.printl "1" >>= fun () ->
+  delay 10. >>= fun () ->
+  Lwt_io.printl "2" >>= fun () ->
+  delay 20. >>= fun () ->
+  Lwt_io.printl "3" >>= fun () -> Lwt_io.printl "all done"
+
+(* timing challenge 4 *)
+let timing4 () =
+  let t1 = delay 1. >>= fun () -> Lwt_io.printl "1" in
+  let t2 = delay 10. >>= fun () -> Lwt_io.printl "2" in
+  let t3 = delay 20. >>= fun () -> Lwt_io.printl "3" in
+  Lwt.join [ t1; t2; t3 ] >>= fun () -> Lwt_io.printl "all done"
+
+(* file monitor *)
+
+(* in another file *)
+
+(* add opt *)
+module type Monad = sig
+  type 'a t
+
+  val return : 'a -> 'a t
+
+  val ( >>= ) : 'a t -> ('a -> 'b t) -> 'b t
+end
+
+module Maybe : Monad = struct
+  type 'a t = 'a option
+
+  let return x = Some x
+
+  let ( >>= ) m f = match m with Some x -> f x | None -> None
+end
+
+open Maybe
+
+let add (x : int Maybe.t) (y : int Maybe.t) =
+  x >>= fun n ->
+  y >>= fun m -> return (m + n)
+
+(* fmap and join *)
+module type ExtMonad = sig
+  type 'a t
+
+  val return : 'a -> 'a t
+
+  val ( >>= ) : 'a t -> ('a -> 'b t) -> 'b t
+
+  val ( >>| ) : 'a t -> ('a -> 'b) -> 'b t
+
+  val join : 'a t t -> 'a t
+end
+
+module Maybe : ExtMonad = struct
+  type 'a t = 'a option
+
+  let return x = Some x
+
+  let ( >>= ) m f = match m with Some x -> f x | None -> None
+
+  let ( >>| ) m f = match m with Some x -> Some (f x) | None -> None
+
+  let join m = match m with Some m' -> m' | None -> None
+end
+
+(* fmap and join again *)
+module Maybe : ExtMonad = struct
+  type 'a t = 'a option
+
+  let return x = Some x
+
+  let ( >>= ) m f = match m with Some x -> f x | None -> None
+
+  let ( >>| ) m f = m >>= fun x -> return (f x)
+
+  let join m = m >>= fun x -> x
+end
+
+(* bind from fmap + join *)
+module type FmapJoinMonad = sig
+  type 'a t
+
+  val ( >>| ) : 'a t -> ('a -> 'b) -> 'b t
+
+  val join : 'a t t -> 'a t
+
+  val return : 'a -> 'a t
+end
+
+module type BindMonad = sig
+  type 'a t
+
+  val return : 'a -> 'a t
+
+  val ( >>= ) : 'a t -> ('a -> 'b t) -> 'b t
+end
+
+module MakeMonad (M : FmapJoinMonad) : BindMonad = struct
+  type 'a t = 'a M.t
+
+  let return = M.return
+
+  let ( >>= ) m f = M.(m >>| f |> join)
+end
+
+(* list monad *)
+module type ExtMonad = sig
+  type 'a t
+
+  val return : 'a -> 'a t
+
+  val ( >>= ) : 'a t -> ('a -> 'b t) -> 'b t
+
+  val ( >>| ) : 'a t -> ('a -> 'b) -> 'b t
+
+  val join : 'a t t -> 'a t
+end
+
+module ListMonad : ExtMonad = struct
+  type 'a t = 'a list
+
+  let return x = [ x ]
+
+  let ( >>| ) l f = List.map f l
+
+  let join [ l ] = l
+
+  let ( >>= ) m f = m |> List.map f |> List.concat
+end
+(* trivial monad laws *)
+(* omitted *)

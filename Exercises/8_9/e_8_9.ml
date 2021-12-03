@@ -519,7 +519,7 @@ let timing4 () =
 
 (* file monitor *)
 
-(* later *)
+(* in another file *)
 
 (* add opt *)
 module type Monad = sig

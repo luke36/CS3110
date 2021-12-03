@@ -1,0 +1,6 @@
+(** @canonical Dune__exe.E_8_9 *)
+module E_8_9 = Dune__exe__E_8_9
+
+
+(** @canonical Dune__exe.Monitor *)
+module Monitor = Dune__exe__Monitor
