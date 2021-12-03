@@ -23,10 +23,7 @@ let monitor () : unit Lwt.t = log () >>= loop
     returning the unit promise. Any other input is re-raised
     with [Lwt.fail]. *)
 let handler : exn -> unit Lwt.t = function
-  | End_of_file ->
-      let (p : unit Lwt.t), r = Lwt.wait () in
-      let _ = Lwt.wakeup r () in
-      p
+  | End_of_file -> Lwt.return ()
   | exc -> Lwt.fail exc
 
 let main () : unit Lwt.t = Lwt.catch monitor handler
